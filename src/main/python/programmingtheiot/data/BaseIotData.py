@@ -1,11 +1,11 @@
 #####
 # 
-# This class is part of the Programming the Internet of Things
-# project, and is available via the MIT License, which can be
-# found in the LICENSE file at the top level of this repository.
+# This class is part of the Programming the Internet of Things project.
 # 
-# Copyright (c) 2020 by Andrew D. King
-# 
+# It is provided as a simple shell to guide the student and assist with
+# implementation for the Programming the Internet of Things exercises,
+# and designed to be modified by the student as needed.
+#
 
 from datetime import datetime
 
