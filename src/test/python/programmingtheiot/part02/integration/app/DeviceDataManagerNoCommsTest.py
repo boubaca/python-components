@@ -10,12 +10,14 @@
 import logging
 import unittest
 
-from programmingtheiot.cda.app.ConstrainedDeviceApp import ConstrainedDeviceApp
+from time import sleep
 
-class ConstrainedDeviceAppTest(unittest.TestCase):
+from programmingtheiot.cda.app.DeviceDataManager import DeviceDataManager
+
+class DeviceDataManagerNoCommsTest(unittest.TestCase):
 	"""
-	This test case class contains very basic unit tests for
-	ConstrainedDeviceApp. It should not be considered complete,
+	This test case class contains very basic integration tests for
+	DeviceDataManager. It should not be considered complete,
 	but serve as a starting point for the student implementing
 	additional functionality within their Programming the IoT
 	environment.
@@ -36,7 +38,6 @@ class ConstrainedDeviceAppTest(unittest.TestCase):
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
 		logging.info("Testing DeviceDataManager class...")
-		self.cda = ConstrainedDeviceApp()
 		
 	def setUp(self):
 		pass
@@ -44,9 +45,13 @@ class ConstrainedDeviceAppTest(unittest.TestCase):
 	def tearDown(self):
 		pass
 
-	def testRunConstrainedDeviceApp(self):
-		self.cda.startApp()
-		self.cda.stopApp(0)
+	def testStartAndStopManagerNoComms(self):
+		ddMgr = DeviceDataManager(enableMqtt = False, enableCoap = False)
+		ddMgr.startManager()
+		
+		sleep(30)
+		
+		ddMgr.stopManager()
 
 if __name__ == "__main__":
 	unittest.main()

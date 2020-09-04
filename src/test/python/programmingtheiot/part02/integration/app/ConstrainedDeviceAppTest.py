@@ -10,14 +10,12 @@
 import logging
 import unittest
 
-from time import sleep
+from programmingtheiot.cda.app.ConstrainedDeviceApp import ConstrainedDeviceApp
 
-from programmingtheiot.cda.app.DeviceDataManager import DeviceDataManager
-
-class DeviceDataManagerTest(unittest.TestCase):
+class ConstrainedDeviceAppTest(unittest.TestCase):
 	"""
-	This test case class contains very basic integration tests for
-	DeviceDataManager. It should not be considered complete,
+	This test case class contains very basic unit tests for
+	ConstrainedDeviceApp. It should not be considered complete,
 	but serve as a starting point for the student implementing
 	additional functionality within their Programming the IoT
 	environment.
@@ -37,7 +35,8 @@ class DeviceDataManagerTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
-		logging.info("Testing DeviceDataManager class...")
+		logging.info("Testing ConstrainedDeviceApp class...")
+		self.cda = ConstrainedDeviceApp()
 		
 	def setUp(self):
 		pass
@@ -45,40 +44,9 @@ class DeviceDataManagerTest(unittest.TestCase):
 	def tearDown(self):
 		pass
 
-	def testStartAndStopManagerNoComms(self):
-		ddMgr = DeviceDataManager(enableMqtt = False, enableCoap = False)
-		ddMgr.startManager()
-		
-		sleep(30)
-		
-		ddMgr.stopManager()
-
-	@unittest.skip("Ignore for now.")
-	def testStartAndStopManagerWithMqtt(self):
-		ddMgr = DeviceDataManager(enableMqtt = True, enableCoap = False)
-		ddMgr.startManager()
-		
-		sleep(30)
-		
-		ddMgr.stopManager()
-
-	@unittest.skip("Ignore for now.")
-	def testStartAndStopManagerWithCoap(self):
-		ddMgr = DeviceDataManager(enableMqtt = False, enableCoap = True)
-		ddMgr.startManager()
-		
-		sleep(30)
-		
-		ddMgr.stopManager()
-
-	@unittest.skip("Ignore for now.")
-	def testStartAndStopManagerWithMqttAndCoap(self):
-		ddMgr = DeviceDataManager(enableMqtt = True, enableCoap = True)
-		ddMgr.startManager()
-		
-		sleep(30)
-		
-		ddMgr.stopManager()
+	def testRunConstrainedDeviceApp(self):
+		self.cda.startApp()
+		self.cda.stopApp(0)
 
 if __name__ == "__main__":
 	unittest.main()
