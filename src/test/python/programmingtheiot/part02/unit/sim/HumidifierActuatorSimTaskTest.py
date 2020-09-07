@@ -11,12 +11,12 @@ import logging
 import unittest
 
 from programmingtheiot.data.ActuatorData import ActuatorData
-from programmingtheiot.cda.sim.HvacActuatorSimTask import HvacActuatorSimTask
+from programmingtheiot.cda.sim.HumidifierActuatorSimTask import HumidifierActuatorSimTask
 
-class HvacActuatorSimTaskTest(unittest.TestCase):
+class HumidifierActuatorSimTaskTest(unittest.TestCase):
 	"""
 	This test case class contains very basic unit tests for
-	HvacActuatorSimTask. It should not be considered complete,
+	HumidifierActuatorSimTask. It should not be considered complete,
 	but serve as a starting point for the student implementing
 	additional functionality within their Programming the IoT
 	environment.
@@ -27,8 +27,8 @@ class HvacActuatorSimTaskTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
-		logging.info("Testing HvacActuatorSimTask class...")
-		self.hSimTask = HvacActuatorSimTask()
+		logging.info("Testing HumidifierActuatorSimTask class...")
+		self.hSimTask = HumidifierActuatorSimTask()
 		
 	def setUp(self):
 		pass
@@ -37,7 +37,7 @@ class HvacActuatorSimTaskTest(unittest.TestCase):
 		pass
 
 	def testUpdateActuator(self):
-		ad = ActuatorData(actuatorType = ActuatorData.HVAC_ACTUATOR_TYPE)
+		ad = ActuatorData(actuatorType = ActuatorData.HUMIDIFIER_ACTUATOR_TYPE)
 		ad.setCommand(ActuatorData.COMMAND_ON)
 		ad.setValue(self.DEFAULT_VAL_A)
 		self.assertTrue(self.hSimTask.updateActuator(ad))
