@@ -44,10 +44,10 @@ class DataIntegrationTest(unittest.TestCase):
 		self.cdaDataPath = ConfigUtil().getProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.TEST_CDA_DATA_PATH_KEY)
 		self.gdaDataPath = ConfigUtil().getProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.TEST_GDA_DATA_PATH_KEY)
 		
-		cdaPath = os.path.dirname(self.cdaDataPath)
-		
-		if not os.path.exists(cdaPath):
-			os.makedirs(cdaPath)
+		if not os.path.exists(self.cdaDataPath):
+			logging.info("================================================")
+			logging.info("DataIntegrationTest - path needs to be created: " + self.cdaDataPath)
+			os.makedirs(self.cdaDataPath, exist_ok = True)
 			
 	def setUp(self):
 		logging.info("================================================")
