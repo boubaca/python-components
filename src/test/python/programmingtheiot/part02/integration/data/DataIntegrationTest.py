@@ -8,6 +8,7 @@
 # 
 
 import logging
+import os
 import unittest
 
 import programmingtheiot.common.ConfigConst as ConfigConst
@@ -40,17 +41,14 @@ class DataIntegrationTest(unittest.TestCase):
 		
 		self.dataUtil = DataUtil(encodeToUtf8)
 
-		self.adName = "FooBar ActuatorData"
-		self.sdName = "FooBar SensorData"
-		self.spdName = "FooBar SystemPerformanceData"
-		
-		self.sampleSpdJson = "{\"name\": \"" + self.spdName + "\", \"timeStamp\":\"2019.01.16 21:32:34.123123\",\"cpuUtil\":0.0,\"diskUtil\":0.0,\"memUtil\":0.0}"
-		self.sampleAdJson = "{\"name\": \"" + self.adName + "\", \"timeStamp\": \"2019-01-20 15:38:35.123123\", \"hasError\": false, \"command\": 0, \"statusCode\": 0, \"stateData\": null, \"curValue\": 0.0}"
-		self.sampleSdJson = "{\"name\": \"" + self.sdName + "\", \"timeStamp\":\"2019.01.16 21:32:34.123123\",\"curValue\":0.0}"
-		
 		self.cdaDataPath = ConfigUtil().getProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.TEST_CDA_DATA_PATH_KEY)
 		self.gdaDataPath = ConfigUtil().getProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.TEST_GDA_DATA_PATH_KEY)
 		
+		cdaPath = os.path.dirname(self.cdaDataPath)
+		
+		if not os.path.exists(cdaPath):
+			os.makedirs(cdaPath)
+			
 	def setUp(self):
 		logging.info("================================================")
 		logging.info("DataUtil test execution...")
@@ -65,11 +63,11 @@ class DataIntegrationTest(unittest.TestCase):
 	def testWriteActuatorDataToCdaDataPath(self):
 		logging.info("\n\n----- [ActuatorData to JSON to file] -----")
 		
-		dataObj  = self.dataUtil.jsonToActuatorData(self.sampleAdJson)
+		dataObj  = ActuatorData()
 		dataStr  = self.dataUtil.actuatorDataToJson(dataObj)
 		fileName = self.cdaDataPath + '/ActuatorData.dat'
 
-		logging.info("Sample ActuatorData JSON (validated): " + str(self.dataStr))
+		logging.info("Sample ActuatorData JSON (validated): " + str(dataStr))
 		logging.info("Writing ActuatorData JSON to CDA data path: " + fileName)
 		
 		fileRef = Path(fileName)
@@ -79,11 +77,11 @@ class DataIntegrationTest(unittest.TestCase):
 	def testWriteSensorDataToCdaDataPath(self):
 		logging.info("\n\n----- [SensorData to JSON to file] -----")
 		
-		dataObj  = self.dataUtil.jsonToSensorData(self.sampleSdJson)
+		dataObj  = SensorData()
 		dataStr  = self.dataUtil.sensorDataToJson(dataObj)
 		fileName = self.cdaDataPath + '/SensorData.dat'
 
-		logging.info("Sample SensorData JSON (validated): " + str(self.dataStr))
+		logging.info("Sample SensorData JSON (validated): " + str(dataStr))
 		logging.info("Writing SensorData JSON to CDA data path: " + fileName)
 		
 		fileRef = Path(fileName)
@@ -93,11 +91,11 @@ class DataIntegrationTest(unittest.TestCase):
 	def testWriteSystemPerformanceDataToCdaDataPath(self):
 		logging.info("\n\n----- [SystemPerformanceData to JSON to file] -----")
 		
-		dataObj  = self.dataUtil.jsonToSystemPerformanceData(self.sampleSpdJson)
+		dataObj  = SystemPerformanceData()
 		dataStr  = self.dataUtil.sensorDataToJson(dataObj)
 		fileName = self.cdaDataPath + '/SystemPerformanceData.dat'
 
-		logging.info("Sample SystemPerformanceData JSON (validated): " + str(self.dataStr))
+		logging.info("Sample SystemPerformanceData JSON (validated): " + str(dataStr))
 		logging.info("Writing SystemPerformanceData JSON to CDA data path: " + fileName)
 		
 		fileRef = Path(fileName)
@@ -141,7 +139,6 @@ class DataIntegrationTest(unittest.TestCase):
 
 		logging.info("SystemPerformanceData JSON from GDA: " + dataStr)
 		logging.info("SystemPerformanceData object: " + str(dataObj))
-
 
 if __name__ == "__main__":
 	unittest.main()
