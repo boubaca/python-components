@@ -35,6 +35,8 @@ enableEmulator  = False
 enableSenseHAT  = False
 enableLogging   = True
 pollCycleSecs   = 60
+testGdaDataPath = /tmp/gda-data
+testCdaDataPath = /tmp/cda-data
 
 # configurable limits for sensor simulation
 humiditySimFloor   = 35

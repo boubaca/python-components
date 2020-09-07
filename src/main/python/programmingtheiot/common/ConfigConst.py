@@ -67,6 +67,9 @@ CDA_SYSTEM_PERF_MSG_RESOURCE  = PRODUCT_NAME + '/' + CONSTRAINED_DEVICE + '/' + 
 DEFAULT_CONFIG_FILE_NAME = '../../../../../../../config/PiotConfig.props'
 DEFAULT_CRED_FILE_NAME   = '../../../../../../../cred/PiotCred.props'
 
+TEST_GDA_DATA_PATH_KEY = 'testGdaDataPath'
+TEST_CDA_DATA_PATH_KEY = 'testCdaDataPath'
+
 LOCAL   = 'Local'
 MQTT    = 'Mqtt'
 COAP    = 'Coap'
