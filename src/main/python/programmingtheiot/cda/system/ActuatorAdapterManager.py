@@ -27,10 +27,3 @@ class ActuatorAdapterManager(object):
 	
 	def setDataMessageListener(self, listener: IDataMessageListener) -> bool:
 		pass
-
-	def _emulateActuation(self, data: ActuatorData):
-		pass
-		
-	def _engageActuator(self, data: ActuatorData):
-		pass
-	
