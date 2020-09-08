@@ -15,7 +15,7 @@ from time import sleep
 from programmingtheiot.common.DefaultDataMessageListener import DefaultDataMessageListener
 from programmingtheiot.cda.system.SensorAdapterManager import SensorAdapterManager
 
-class SensorSimAdapterManagerTest(unittest.TestCase):
+class SensorAdapterManagerTest(unittest.TestCase):
 	"""
 	This test case class contains very basic unit tests for
 	SensorAdapterManager. It should not be considered complete,
@@ -27,7 +27,7 @@ class SensorSimAdapterManagerTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
-		logging.info("Testing SensorAdapterManager class [using simulators]...")
+		logging.info("Testing SensorAdapterManager class...")
 		
 		self.defaultMsgListener = DefaultDataMessageListener()
 		self.sensorAdapterMgr = SensorAdapterManager()
@@ -42,7 +42,7 @@ class SensorSimAdapterManagerTest(unittest.TestCase):
 	def testStartAndStopManager(self):
 		self.sensorAdapterMgr.startManager()
 		
-		sleep(60)
+		sleep(20)
 		
 		self.sensorAdapterMgr.stopManager()
 

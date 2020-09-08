@@ -17,7 +17,7 @@ from programmingtheiot.common.DefaultDataMessageListener import DefaultDataMessa
 
 from programmingtheiot.data.ActuatorData import ActuatorData
 
-class ActuatorSimAdapterManagerTest(unittest.TestCase):
+class ActuatorAdapterManagerTest(unittest.TestCase):
 	"""
 	This test case class contains very basic unit tests for
 	ActuatorSimAdapterManager. It should not be considered complete,
@@ -29,10 +29,10 @@ class ActuatorSimAdapterManagerTest(unittest.TestCase):
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
-		logging.info("Testing ActuatorAdapterManager class [using simulators]...")
+		logging.info("Testing ActuatorAdapterManager class...")
 		
 		self.defaultMsgListener = DefaultDataMessageListener()
-		self.actuatorAdapterMgr = ActuatorAdapterManager(useEmulator = False)
+		self.actuatorAdapterMgr = ActuatorAdapterManager()
 		self.actuatorAdapterMgr.setDataMessageListener(self.defaultMsgListener)
 		
 	def setUp(self):
