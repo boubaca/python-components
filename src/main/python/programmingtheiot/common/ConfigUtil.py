@@ -13,6 +13,9 @@
 import configparser
 import logging
 import os
+import traceback
+
+from pathlib import Path
 
 from programmingtheiot.common.Singleton import Singleton
 import programmingtheiot.common.ConfigConst as ConfigConst
@@ -53,6 +56,53 @@ class ConfigUtil(metaclass = Singleton):
 		"""
 		return self.configFile
 
+	def getCredentials(self, section: str) -> dict:
+		"""
+		Attempts to load a separate configuration 'credential' file comprised
+		of simple key = value pairs. The assumption with this call is that
+		the credential file key is the same across all sections, so the
+		only parameter requires is the section.
+		
+		If the credential file key has an entry (e.g. the file where the
+		credentials are stored in key = value form), the file will be
+		loaded if possible, and a dict object will be returned
+		to the caller. No caching of the data is made, except within the
+		returned dict object.
+		
+		NOTE: The key case IS preserved.
+		
+		@param section
+		@return dict The dictionary of properties, or None if non-existent.
+		"""
+		if (self.hasSection(section)):
+			credFileName = self.getProperty(section, ConfigConst.CRED_FILE_KEY);
+			
+			try:
+				if os.path.exists(credFileName) and os.path.isfile(credFileName):
+					logging.info("Loading credentials from section " + section + " and file " + credFileName)
+					
+					# read cred data and dump it into a custom section for parsing
+					fileRef  = Path(credFileName)
+					credData = "[" + ConfigConst.CRED_SECTION + "]\n" + fileRef.read_text()
+					
+					# create unique ConfigParser that preserves key case
+					credParser = configparser.ConfigParser()
+					credParser.optionxform = str
+					
+					# read the stringified file data and generate / return
+					# a dict for the section we just created
+					credParser.read_string(credData)
+					credProps = dict(credParser.items(ConfigConst.CRED_SECTION))
+					
+					return credProps
+				else:
+					logging.warn("Credential file doesn't exist: " + credFileName)
+			except Exception as e:
+				traceback.print_exc()
+				logging.warn("Failed to load credentials from file: " + credFileName + ". Exception: " + str(e))
+		
+		return None
+	
 	def getProperty(self, section: str, key: str, defaultVal: str = None, forceReload: bool = False):
 		"""
 		Attempts to retrieve the value of 'key' from the config.
@@ -126,7 +176,7 @@ class ConfigUtil(metaclass = Singleton):
 		@return boolean True on success; False otherwise.
 		"""
 		return self.isLoaded
-	
+
 	#
 	# private methods
 	#
@@ -137,7 +187,7 @@ class ConfigUtil(metaclass = Singleton):
 		the constructor.
 		 
 		"""
-		if (os.path.exists(self.configFile)):
+		if (os.path.exists(self.configFile) and os.path.isfile(self.configFile)):
 			logging.info("Loading config: %s", self.configFile)
 			
 			self.configParser.read(self.configFile)

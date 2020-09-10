@@ -82,6 +82,8 @@ MQTT_GATEWAY_SERVICE  = MQTT    + '.' + GATEWAY_SERVICE
 OPCUA_GATEWAY_SERVICE = OPCUA   + '.' + GATEWAY_SERVICE
 SMTP_GATEWAY_SERVICE  = SMTP    + '.' + GATEWAY_SERVICE
 
+CRED_SECTION = "Credentials"
+
 FROM_ADDRESS_KEY     = 'fromAddr'
 TO_ADDRESS_KEY       = 'toAddr'
 TO_MEDIA_ADDRESS_KEY = 'toMediaAddr'
@@ -96,6 +98,7 @@ USER_AUTH_TOKEN_KEY  = 'authToken'
 API_TOKEN_KEY        = 'apiToken'
 
 CERT_FILE_KEY        = 'certFile'
+CRED_FILE_KEY        = 'credFile'
 ENABLE_AUTH_KEY      = 'enableAuth'
 ENABLE_CRYPT_KEY     = 'enableCrypt'
 ENABLE_EMULATOR_KEY  = 'enableEmulator'

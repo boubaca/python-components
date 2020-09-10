@@ -22,12 +22,20 @@ class ConfigUtilTest(unittest.TestCase):
 	additional functionality within their Programming the IoT
 	environment.
 	"""
+	DEFAULT_USER = "Foo"
+	DEFAULT_AUTH = "Bar"
+	
+	# optionally test the following files
+	#  - EmptyTestConfig.props
+	#  - InvalidTestConfig.props
+	#  - None (which will default to ./config/PiotConfig.props)
+	configFile = "./ValidTestConfig.props"
 	
 	@classmethod
 	def setUpClass(self):
 		logging.basicConfig(format = '%(asctime)s:%(module)s:%(levelname)s:%(message)s', level = logging.DEBUG)
 		logging.info("Testing ConfigUtil class...")
-		self.configUtil = ConfigUtil()
+		self.configUtil = ConfigUtil(configFile = self.configFile)
 		
 	def setUp(self):
 		pass
@@ -39,6 +47,13 @@ class ConfigUtilTest(unittest.TestCase):
 		enableLogging = self.configUtil.hasProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.ENABLE_LOGGING_KEY)
 		self.assertTrue(enableLogging)
 	
+	def testGetCredentials(self):
+		creds = self.configUtil.getCredentials(ConfigConst.CONSTRAINED_DEVICE)
+		self.assertIsNotNone(creds)
+		self.assertEqual(creds[ConfigConst.USER_NAME_TOKEN_KEY], self.DEFAULT_USER)
+		self.assertEqual(creds[ConfigConst.USER_AUTH_TOKEN_KEY], self.DEFAULT_AUTH)
+		pass
+		
 	def testGetIntegerProperty(self):
 		port = self.configUtil.getInteger(ConfigConst.MQTT_GATEWAY_SERVICE, ConfigConst.PORT_KEY)
 		self.assertEqual(port, ConfigConst.DEFAULT_MQTT_PORT)
