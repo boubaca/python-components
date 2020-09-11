@@ -10,6 +10,7 @@
 #
 [Mqtt.GatewayService]
 credFile       = ./cred/PiotMqttCred.props
+certFile       = ./cert/PiotMqttLocalCertFile.pem
 host           = localhost
 port           = 1883
 securePort     = 1884
@@ -22,6 +23,7 @@ enableCrypt    = False
 #
 [Coap.GatewayService]
 credFile       = ./cred/PiotCoapCred.props
+certFile       = ./cert/PiotCoapLocalCertFile.pem
 host           = localhost
 port           = 5683
 securePort     = 5684
