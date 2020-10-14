@@ -22,11 +22,3 @@ class HvacActuatorSimTask(BaseActuatorSimTask):
 	def __init__(self):
 		pass
 		
-	def activateActuator(self, val: float) -> bool:
-		pass
-		
-	def deactivateActuator(self) -> bool:
-		pass
-		
-	def updateActuator(self, data: ActuatorData) -> ActuatorData:
-		pass

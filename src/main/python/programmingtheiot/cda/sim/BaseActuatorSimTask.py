@@ -34,5 +34,19 @@ class BaseActuatorSimTask():
 		pass
 	
 	def updateActuator(self, data: ActuatorData) -> bool:
+		"""
+		NOTE: If 'data' is valid, the actuator-specific work can be delegated
+		to self._handleActuation, provided the sub-class implements this
+		template method.
+		"""
 		pass
 		
+	def _handleActuation(self, cmd: int, val: float = 0.0, stateData: str = None) -> int:
+		"""
+		Should be implemented by sub-class.
+		
+		@param cmd The actuation command to process.
+		@param stateData The string state data to use in processing the command.
+		@return int The status code from the actuation call.
+		"""
+		pass
