@@ -31,25 +31,25 @@ class DeviceDataManager(IDataMessageListener):
 	
 	def __init__(self, enableMqtt: bool = True, enableCoap: bool = False):
 		pass
-			
+		
 	def handleActuatorCommandResponse(self, data: ActuatorData) -> bool:
 		pass
-	
+		
 	def handleIncomingMessage(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
 		pass
-
+		
 	def handleSensorMessage(self, data: SensorData) -> bool:
 		pass
 		
 	def handleSystemPerformanceMessage(self, data: SystemPerformanceData) -> bool:
 		pass
-	
+		
 	def startManager(self):
 		pass
 		
 	def stopManager(self):
 		pass
-
+		
 	def _handleIncomingDataAnalysis(self, msg: str):
 		"""
 		Call this from handleIncomeMessage() to determine if there's

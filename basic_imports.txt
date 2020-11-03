@@ -11,5 +11,5 @@ pisense
 # Imports for Chapters 06 and later
 paho-mqtt
 
-# Imports for Chapters 08 and later
+# Imports for Chapters 09 and later
 CoAPthon3

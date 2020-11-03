@@ -10,10 +10,6 @@
 import logging
 import unittest
 
-from time import sleep
-
-import programmingtheiot.common.ConfigConst as ConfigConst
-
 from programmingtheiot.common.ConfigUtil import ConfigUtil
 from programmingtheiot.common.ResourceNameEnum import ResourceNameEnum
 
@@ -34,7 +30,7 @@ class CoapClientConnectorTest(unittest.TestCase):
 		logging.info("Testing CoapClientConnector class...")
 		
 		self.cfg = ConfigUtil()
-		self.mcc = CoapClientConnector()
+		self.coapClient = CoapClientConnector()
 		
 	def setUp(self):
 		pass
@@ -44,32 +40,22 @@ class CoapClientConnectorTest(unittest.TestCase):
 
 	#@unittest.skip("Ignore for now.")
 	def testConnectAndGet(self):
-		# TODO: implement this
+		self.coapClient.sendGetRequest(ResourceNameEnum.CDA_MGMT_STATUS_MSG_RESOURCE)
 		pass
 
 	#@unittest.skip("Ignore for now.")
 	def testConnectAndDelete(self):
-		# TODO: implement this
+		self.coapClient.sendDeleteRequest(ResourceNameEnum.CDA_MGMT_STATUS_MSG_RESOURCE)
 		pass
 
 	#@unittest.skip("Ignore for now.")
 	def testConnectAndPost(self):
-		# TODO: implement this
+		self.coapClient.sendPostRequest(ResourceNameEnum.CDA_MGMT_STATUS_MSG_RESOURCE)
 		pass
 
 	#@unittest.skip("Ignore for now.")
 	def testConnectAndPut(self):
-		# TODO: implement this
-		pass
-
-	#@unittest.skip("Ignore for now.")
-	def testIntegrateWithGdaGetCdaCmdTopic(self):
-		# TODO: implement this
-		pass
-
-	#@unittest.skip("Ignore for now.")
-	def testIntegrateWithGdaPostCdaMgmtTopic(self):
-		# TODO: implement this
+		self.coapClient.sendPutRequest(ResourceNameEnum.CDA_MGMT_STATUS_MSG_RESOURCE)
 		pass
 
 if __name__ == "__main__":

@@ -40,10 +40,10 @@ class MqttClientConnector(IPubSubClient):
 		"""
 		pass
 
-	def connect(self) -> bool:
+	def connectClient(self) -> bool:
 		pass
 		
-	def disconnect(self) -> bool:
+	def disconnectClient(self) -> bool:
 		pass
 		
 	def onConnect(self, client, userdata, flags, rc):
