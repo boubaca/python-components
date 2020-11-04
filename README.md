@@ -8,7 +8,7 @@ If you're reading [Programming the Internet of Things: An Introduction to Buildi
 
 A solution set is available, although I haven't yet released it. Stay tuned for updates on this topic.
 
-## What exercises does this repository support
+## This repository aligns to exercises in my Programming the Internet of Things book
 These components are all written in Python3, and correlate to the exercises designed for the Constrained Device Application (CDA) specified in my book [Programming the Internet of Things: An Introduction to Building Integrated, Device to Cloud IoT Solutions](https://learning.oreilly.com/library/view/programming-the-internet/9781492081401).
 
 Since Python is also used for various cloud computing activities, there are other components that may be introduced as Cloud Service Functions (CSF) in the future, as they will share some of the common data management code written for the CDA exercises.
