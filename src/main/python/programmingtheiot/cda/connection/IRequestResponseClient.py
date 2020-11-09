@@ -4,10 +4,7 @@
 # project, and is available via the MIT License, which can be
 # found in the LICENSE file at the top level of this repository.
 # 
-# You may find it more helpful to your design to adjust the
-# functionality, constants and interfaces (if there are any)
-# provided within in order to meet the needs of your specific
-# Programming the Internet of Things project.
+# Copyright (c) 2020 by Andrew D. King
 # 
 
 from programmingtheiot.common.ResourceNameEnum import ResourceNameEnum
@@ -31,7 +28,7 @@ class IRequestResponseClient():
 		"""
 		pass
 
-	def sendDeleteRequest(self, resource: ResourceNameEnum, timeout: int = DEFAULT_TIMEOUT) -> bool:
+	def sendDeleteRequest(self, resource: ResourceNameEnum, enableCON = False, timeout: int = DEFAULT_TIMEOUT) -> bool:
 		"""
 		Connects to the server and sends DELETE request to resource at path.
 		IDataMessageListener callback must be set to receive response.
@@ -42,7 +39,7 @@ class IRequestResponseClient():
 		"""
 		pass
 
-	def sendGetRequest(self, resource: ResourceNameEnum, timeout: int = DEFAULT_TIMEOUT) -> bool:
+	def sendGetRequest(self, resource: ResourceNameEnum, enableCON = False, timeout: int = DEFAULT_TIMEOUT) -> bool:
 		"""
 		Connects to the server and sends GET request for resource at path.
 		IDataMessageListener callback must be set to receive response.
@@ -53,7 +50,7 @@ class IRequestResponseClient():
 		"""
 		pass
 
-	def sendPostRequest(self, resource: ResourceNameEnum, payload: str, timeout: int = DEFAULT_TIMEOUT) -> bool:
+	def sendPostRequest(self, resource: ResourceNameEnum, enableCON = False, payload: str = None, timeout: int = DEFAULT_TIMEOUT) -> bool:
 		"""
 		Connects to the server and sends POST request of payload to resource at path.
 		IDataMessageListener callback must be set to receive response.
@@ -65,7 +62,7 @@ class IRequestResponseClient():
 		"""
 		pass
 
-	def sendPutRequest(self, resource: ResourceNameEnum, payload: str, timeout: int = DEFAULT_TIMEOUT) -> bool:
+	def sendPutRequest(self, resource: ResourceNameEnum, enableCON = False, payload: str = None, timeout: int = DEFAULT_TIMEOUT) -> bool:
 		"""
 		Connects to the server and sends GET request for resource at path.
 		IDataMessageListener callback must be set to receive response.

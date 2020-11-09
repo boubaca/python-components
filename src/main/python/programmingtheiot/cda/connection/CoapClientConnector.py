@@ -10,15 +10,20 @@
 import logging
 import socket
 
+from coapthon import defines
+from coapthon.client.coap import CoAP
 from coapthon.client.helperclient import HelperClient
+from coapthon.messages.message import Message
+from coapthon.messages.request import Request
 from coapthon.utils import parse_uri
+from coapthon.utils import generate_random_token
 
-from programmingtheiot.common import ConfigUtil
-from programmingtheiot.common import ConfigConst
+import programmingtheiot.common.ConfigConst as ConfigConst
 
-from programmingtheiot.common.IDataMessageListener import IDataMessageListener
+from programmingtheiot.common.ConfigUtil import ConfigUtil
 from programmingtheiot.common.ResourceNameEnum import ResourceNameEnum
 
+from programmingtheiot.common.IDataMessageListener import IDataMessageListener
 from programmingtheiot.cda.connection.IRequestResponseClient import IRequestResponseClient
 
 class CoapClientConnector(IRequestResponseClient):
@@ -33,16 +38,16 @@ class CoapClientConnector(IRequestResponseClient):
 	def sendDiscoveryRequest(self, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
 		pass
 
-	def sendDeleteRequest(self, resource: ResourceNameEnum, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
+	def sendDeleteRequest(self, resource: ResourceNameEnum, enableCON = False, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
 		pass
 
-	def sendGetRequest(self, resource: ResourceNameEnum, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
+	def sendGetRequest(self, resource: ResourceNameEnum, enableCON = False, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
 		pass
 
-	def sendPostRequest(self, resource: ResourceNameEnum, payload: str, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
+	def sendPostRequest(self, resource: ResourceNameEnum, enableCON = False, payload: str = None, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
 		pass
 
-	def sendPutRequest(self, resource: ResourceNameEnum, payload: str, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
+	def sendPutRequest(self, resource: ResourceNameEnum, enableCON = False, payload: str = None, timeout: int = IRequestResponseClient.DEFAULT_TIMEOUT) -> bool:
 		pass
 
 	def setDataMessageListener(self, listener: IDataMessageListener) -> bool:
