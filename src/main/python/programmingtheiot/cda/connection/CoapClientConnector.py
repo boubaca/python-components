@@ -19,8 +19,8 @@ from coapthon.utils import parse_uri
 from coapthon.utils import generate_random_token
 
 import programmingtheiot.common.ConfigConst as ConfigConst
-
 from programmingtheiot.common.ConfigUtil import ConfigUtil
+
 from programmingtheiot.common.ResourceNameEnum import ResourceNameEnum
 
 from programmingtheiot.common.IDataMessageListener import IDataMessageListener

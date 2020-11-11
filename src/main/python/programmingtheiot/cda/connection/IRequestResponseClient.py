@@ -34,6 +34,7 @@ class IRequestResponseClient():
 		IDataMessageListener callback must be set to receive response.
 		
 		@param resource The resource enum containing the resource path string.
+		@param enableCON If true, CON (confirmed) messaging will be used; otherwise use NON (non-confirmed).
 		@param timeout The number of seconds to wait for a response before returning (default is DEFAULT_TIMEOUT).
 		@return bool True on success; False otherwise.
 		"""
@@ -45,6 +46,7 @@ class IRequestResponseClient():
 		IDataMessageListener callback must be set to receive response.
 		
 		@param resource The resource enum containing the resource path string.
+		@param enableCON If true, CON (confirmed) messaging will be used; otherwise use NON (non-confirmed).
 		@param timeout The number of seconds to wait for a response before returning (default is DEFAULT_TIMEOUT).
 		@return bool True on success; False otherwise.
 		"""
@@ -56,6 +58,7 @@ class IRequestResponseClient():
 		IDataMessageListener callback must be set to receive response.
 		
 		@param resource The resource enum containing the resource path string.
+		@param enableCON If true, CON (confirmed) messaging will be used; otherwise use NON (non-confirmed).
 		@param payload The JSON payload to send.
 		@param timeout The number of seconds to wait for a response before returning (default is DEFAULT_TIMEOUT).
 		@return bool True on success; False otherwise.
@@ -68,6 +71,7 @@ class IRequestResponseClient():
 		IDataMessageListener callback must be set to receive response.
 		
 		@param resource The resource enum containing the resource path string.
+		@param enableCON If true, CON (confirmed) messaging will be used; otherwise use NON (non-confirmed).
 		@param payload The JSON payload to send.
 		@param timeout The number of seconds to wait for a response before returning (default is DEFAULT_TIMEOUT).
 		@return bool True on success; False otherwise.
