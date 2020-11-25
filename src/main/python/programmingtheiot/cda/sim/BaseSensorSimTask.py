@@ -10,6 +10,8 @@
 import logging
 import random
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.SensorData import SensorData
 
 class BaseSensorSimTask():
@@ -21,7 +23,7 @@ class BaseSensorSimTask():
 	DEFAULT_MIN_VAL = 0.0
 	DEFAULT_MAX_VAL = 1000.0
 	
-	def __init__(self, sensorType: int = SensorData.DEFAULT_SENSOR_TYPE, dataSet = None, minVal: float = DEFAULT_MIN_VAL, maxVal: float = DEFAULT_MAX_VAL):
+	def __init__(self, sensorName = ConfigConst.NOT_SET, sensorType: int = SensorData.DEFAULT_SENSOR_TYPE, dataSet = None, minVal: float = DEFAULT_MIN_VAL, maxVal: float = DEFAULT_MAX_VAL):
 		pass
 	
 	def generateTelemetry(self) -> SensorData:

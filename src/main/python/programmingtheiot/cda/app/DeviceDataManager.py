@@ -44,6 +44,9 @@ class DeviceDataManager(IDataMessageListener):
 	def handleSystemPerformanceMessage(self, data: SystemPerformanceData) -> bool:
 		pass
 		
+	def handleUpdateResponse(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
+		pass
+	
 	def startManager(self):
 		pass
 		

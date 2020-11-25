@@ -7,6 +7,8 @@
 # and designed to be modified by the student as needed.
 #
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.BaseIotData import BaseIotData
 
 class SensorData(BaseIotData):
@@ -23,8 +25,8 @@ class SensorData(BaseIotData):
 	PRESSURE_SENSOR_TYPE = 2
 	TEMP_SENSOR_TYPE = 3
 		
-	def __init__(self, sensorType = DEFAULT_SENSOR_TYPE, d = None):
-		super(SensorData, self).__init__(d = d)
+	def __init__(self, sensorName = ConfigConst.NOT_SET, sensorType = DEFAULT_SENSOR_TYPE, d = None):
+		super(SensorData, self).__init__(name = sensorName, d = d)
 		pass
 	
 	def getSensorType(self) -> int:

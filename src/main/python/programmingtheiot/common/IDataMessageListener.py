@@ -19,6 +19,15 @@ class IDataMessageListener():
 	
 	"""
 	
+	def handleActuatorCommandMessage(self, data: ActuatorData) -> bool:
+		"""
+		Callback function to handle an actuator command message packaged as a ActuatorData object.
+		
+		@param data The ActuatorData message received.
+		@return bool True on success; False otherwise.
+		"""
+		pass
+	
 	def handleActuatorCommandResponse(self, data: ActuatorData) -> bool:
 		"""
 		Callback function to handle an actuator command response packaged as a ActuatorData object.
@@ -29,6 +38,17 @@ class IDataMessageListener():
 		pass
 	
 	def handleIncomingMessage(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
+		"""
+		Callback function to handle incoming messages on a given topic with
+		a string-based payload.
+		
+		@param resourceEnum The topic enum associated with this message.
+		@param msg The message received. It is expected to be in JSON format.
+		@return bool True on success; False otherwise.
+		"""
+		pass
+
+	def handleUpdateResponse(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
 		"""
 		Callback function to handle incoming messages on a given topic with
 		a string-based payload.

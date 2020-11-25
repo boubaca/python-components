@@ -7,6 +7,8 @@
 # and designed to be modified by the student as needed.
 #
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.BaseIotData import BaseIotData
 
 class SystemPerformanceData(BaseIotData):
@@ -17,7 +19,7 @@ class SystemPerformanceData(BaseIotData):
 	DEFAULT_VAL = 0.0
 	
 	def __init__(self, d = None):
-		super(SystemPerformanceData, self).__init__(d = d)
+		super(SystemPerformanceData, self).__init__(name = ConfigConst.SYSTEM_PERF_MSG, d = d)
 		pass
 	
 	def getCpuUtilization(self):

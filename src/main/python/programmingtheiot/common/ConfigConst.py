@@ -18,6 +18,7 @@ configuration values or when default values may be needed.
 #
 
 NOT_SET = 'Not Set'
+
 DEFAULT_HOST             = 'localhost'
 DEFAULT_COAP_PORT        = 5683
 DEFAULT_COAP_SECURE_PORT = 5684
@@ -47,6 +48,20 @@ MGMT_STATUS_MSG = 'MgmtStatusMsg'
 MGMT_STATUS_CMD = 'MgmtStatusCmd'
 SENSOR_MSG      = 'SensorMsg'
 SYSTEM_PERF_MSG = 'SystemPerfMsg'
+
+LED_ACTUATOR_NAME = 'LedActuator'
+HUMIDIFIER_ACTUATOR_NAME = 'HumidifierActuator'
+HVAC_ACTUATOR_NAME = 'HvacActuator'
+
+HUMIDITY_SENSOR_NAME = 'HumiditySensor'
+PRESSURE_SENSOR_NAME = 'PressureSensor'
+TEMP_SENSOR_NAME = 'TempSensor'
+
+SYS_PERF_DATA = 'SysPerfData'
+
+CPU_UTIL_NAME = 'CpuUtil'
+DISK_UTIL_NAME = 'DiskUtil'
+MEM_UTIL_NAME = 'MemUtil'
 
 CDA_ACTUATOR_CMD_MSG_RESOURCE = PRODUCT_NAME + '/' + CONSTRAINED_DEVICE + '/' + ACTUATOR_CMD
 CDA_ACTUATOR_RESPONSE_MSG_RESOURCE = PRODUCT_NAME + '/' + CONSTRAINED_DEVICE + '/' + ACTUATOR_RESPONSE

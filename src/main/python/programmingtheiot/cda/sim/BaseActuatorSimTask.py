@@ -10,6 +10,8 @@
 import logging
 import random
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.ActuatorData import ActuatorData
 
 class BaseActuatorSimTask():
@@ -18,7 +20,7 @@ class BaseActuatorSimTask():
 	
 	"""
 
-	def __init__(self, actuatorType: int = ActuatorData.DEFAULT_ACTUATOR_TYPE, simpleName: str = "Actuator"):
+	def __init__(self, actuatorName = ConfigConst.NOT_SET, actuatorType: int = ActuatorData.DEFAULT_ACTUATOR_TYPE, simpleName: str = "Actuator"):
 		pass
 		
 	def activateActuator(self, val: float) -> bool:

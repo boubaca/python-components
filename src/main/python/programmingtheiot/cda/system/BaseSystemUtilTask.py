@@ -7,6 +7,8 @@
 # and designed to be modified by the student as needed.
 #
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.SensorData import SensorData
 
 class BaseSystemUtilTask():
@@ -15,7 +17,7 @@ class BaseSystemUtilTask():
 	
 	"""
 	
-	def __init__(self):
+	def __init__(self, sensorName = ConfigConst.NOT_SET):
 		###
 		# TODO: fill in the details here
 		self.latestSensorData = None

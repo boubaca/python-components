@@ -7,6 +7,8 @@
 # and designed to be modified by the student as needed.
 #
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.BaseIotData import BaseIotData
 
 class ActuatorData(BaseIotData):
@@ -26,8 +28,8 @@ class ActuatorData(BaseIotData):
 	HUMIDIFIER_ACTUATOR_TYPE = 2
 	LED_DISPLAY_ACTUATOR_TYPE = 100
 
-	def __init__(self, actuatorType = DEFAULT_ACTUATOR_TYPE, d = None):
-		super(ActuatorData, self).__init__(d = d)
+	def __init__(self, actuatorName = ConfigConst.NOT_SET, actuatorType = DEFAULT_ACTUATOR_TYPE, d = None):
+		super(ActuatorData, self).__init__(name = actuatorName, d = d)
 		pass
 	
 	def getCommand(self) -> int:
