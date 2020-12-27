@@ -2,7 +2,7 @@
 
 ## Lab Module 09
 
-Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-09-001 - Chapter 09](https://github.com/orgs/programming-the-iot/projects/1#column-10488503).
+Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-09-001 - Lab Module 09](https://github.com/orgs/programming-the-iot/projects/1#column-10488503).
 
 ### Description
 

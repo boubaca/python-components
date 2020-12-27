@@ -2,7 +2,7 @@
 
 ## Lab Module 12 - Semester Project - CDA Components
 
-Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-10-001 - Chapter 10](https://github.com/orgs/programming-the-iot/projects/1#column-10488510).
+Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-12-001 - Lab Module 12](https://github.com/orgs/programming-the-iot/projects/1#column-10488565).
 
 ### Description
 
