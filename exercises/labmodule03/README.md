@@ -1,8 +1,8 @@
 # Constrained Device Application (Connected Devices)
 
-## Lab Module 05
+## Lab Module 03
 
-Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-05-001 - Chapter 05](https://github.com/orgs/programming-the-iot/projects/1#column-10488421).
+Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-03-001 - Lab Module 03](https://github.com/orgs/programming-the-iot/projects/1#column-10488379).
 
 ### Description
 

@@ -41,6 +41,33 @@ PR's are disabled while the codebase is being developed.
 ## Updates
 Much of this repository, and in particular unit and integration tests, will continue to evolve, so please check back regularly for potential updates.
 
+# REFERENCES
+This repository has external dependencies on other open source projects. I'm grateful to the open source community and authors / maintainers of the following libraries:
+
+Core exercises:
+
+- [apscheduler](https://github.com/agronholm/apscheduler)
+- [psutil](https://github.com/giampaolo/psutil)
+- [numpy](https://numpy.org/)
+- [matplotlib](https://matplotlib.org/)
+  - Reference: [J. D. Hunter, "Matplotlib: A 2D Graphics Environment", Computing in Science & Engineering, vol. 9, no. 3, pp. 90-95, 2007.](https://ieeexplore.ieee.org/document/4160265)
+  - DOI: https://doi.org/10.5281/zenodo.592536
+- [sense-emu](https://sense-emu.readthedocs.io/en/v1.1/)
+- [pisense](https://pisense.readthedocs.io/en/release-0.2/#)
+- [paho-mqtt](https://www.eclipse.org/paho/)
+- [CoAPthon3](https://github.com/Tanganelli/CoAPthon3)
+  - Reference: G.Tanganelli, C. Vallati, E.Mingozzi, "CoAPthon: Easy Development of CoAP-based IoT Applications with Python", IEEE World Forum on Internet of Things (WF-IoT 2015)
+
+Additional exercises:
+
+- [imutils](https://github.com/jrosebr1/imutils)
+- [opencv-python](https://github.com/skvark/opencv-python)
+- [opencv-python-headless](https://pypi.org/project/opencv-python-headless/)
+- [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/)
+- [rtsp](https://github.com/statueofmike/rtsp)
+
+NOTE: This list will be updated as others are incorporated.
+
 # DISCLAIMER
 DISCLAIMER: This code base is still under active development - some tests and code samples may be broken.
 

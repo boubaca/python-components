@@ -1,8 +1,8 @@
 # Constrained Device Application (Connected Devices)
 
-## Lab Module 12 - Semester Project - CDA Components
+## Lab Module 01
 
-Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-10-001 - Chapter 10](https://github.com/orgs/programming-the-iot/projects/1#column-10488510).
+Be sure to implement all the PIOT-CDA-* issues (requirements) listed at [PIOT-INF-01-001 - Lab Module 01](https://github.com/orgs/programming-the-iot/projects/1#column-9974937).
 
 ### Description
 
