@@ -11,6 +11,7 @@ import logging
 import unittest
 
 import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.SensorData import SensorData
 
 class SensorDataTest(unittest.TestCase):
@@ -43,7 +44,9 @@ class SensorDataTest(unittest.TestCase):
 		sd = SensorData()
 		
 		self.assertEquals(sd.getName(), ConfigConst.NOT_SET)
-		self.assertEquals(sd.getValue(), SensorData.DEFAULT_VAL)
+		self.assertEquals(sd.getValue(), ConfigConst.DEFAULT_VAL)
+		
+		logging.info("Sensor data as string: " + str(sd))
 
 	def testParameterUpdates(self):
 		sd = self._createTestSensorData()
@@ -65,6 +68,8 @@ class SensorDataTest(unittest.TestCase):
 		
 		sd.setName(self.DEFAULT_NAME)
 		sd.setValue(self.MIN_VALUE)
+		
+		logging.info("Sensor data as string: " + str(sd))
 		
 		return sd
 

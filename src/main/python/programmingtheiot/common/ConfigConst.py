@@ -26,6 +26,14 @@ DEFAULT_MQTT_PORT        = 1883
 DEFAULT_MQTT_SECURE_PORT = 8883
 DEFAULT_KEEP_ALIVE       = 60
 DEFAULT_POLL_CYCLES      = 60
+DEFAULT_VAL              = 0.0
+DEFAULT_COMMAND          = 0
+DEFAULT_STATUS           = 0
+
+# for purposes of this library, float precision is more then sufficient
+DEFAULT_LAT = DEFAULT_VAL
+DEFAULT_LON = DEFAULT_VAL
+DEFAULT_ELEVATION = DEFAULT_VAL
 
 PRODUCT_NAME = 'PIOT'
 CLOUD        = 'Cloud'
@@ -39,29 +47,71 @@ GATEWAY_SERVICE    = GATEWAY + SERVICE
 CLOUD_SERVICE      = CLOUD + SERVICE
 
 #####
+# Property Names
+#
+
+NAME_PROP        = 'name'
+TYPE_ID_PROP     = 'typeID'
+TIMESTAMP_PROP   = 'timeStamp'
+HAS_ERROR_PROP   = 'hasError'
+STATUS_CODE_PROP = 'statusCode'
+LOCATION_ID_PROP = 'locationID'
+LATITUDE_PROP    = 'latitude'
+LONGITUDE_PROP   = 'longitude'
+ELEVATION_PROP   = 'elevation'
+
+COMMAND_PROP     = 'command'
+STATE_DATA_PROP  = 'stateData'
+VALUE_PROP       = 'value'
+IS_RESPONSE_PROP = 'isResponse'
+
+CPU_UTIL_PROP    = 'cpuUtil'
+DISK_UTIL_PROP   = 'diskUtil'
+MEM_UTIL_PROP    = 'memUtil'
+
+#####
 # Resource and Topic Names
 #
 
-ACTUATOR_CMD    = 'ActuatorCmd'
+ACTUATOR_CMD      = 'ActuatorCmd'
 ACTUATOR_RESPONSE = 'ActuatorResponse'
-MGMT_STATUS_MSG = 'MgmtStatusMsg'
-MGMT_STATUS_CMD = 'MgmtStatusCmd'
-SENSOR_MSG      = 'SensorMsg'
-SYSTEM_PERF_MSG = 'SystemPerfMsg'
+MGMT_STATUS_MSG   = 'MgmtStatusMsg'
+MGMT_STATUS_CMD   = 'MgmtStatusCmd'
+SENSOR_MSG        = 'SensorMsg'
+SYSTEM_PERF_MSG   = 'SystemPerfMsg'
 
-LED_ACTUATOR_NAME = 'LedActuator'
+LED_ACTUATOR_NAME        = 'LedActuator'
 HUMIDIFIER_ACTUATOR_NAME = 'HumidifierActuator'
-HVAC_ACTUATOR_NAME = 'HvacActuator'
+HVAC_ACTUATOR_NAME       = 'HvacActuator'
 
 HUMIDITY_SENSOR_NAME = 'HumiditySensor'
 PRESSURE_SENSOR_NAME = 'PressureSensor'
-TEMP_SENSOR_NAME = 'TempSensor'
+TEMP_SENSOR_NAME     = 'TempSensor'
 
-SYS_PERF_DATA = 'SysPerfData'
+SYSTEM_PERF_NAME  = 'SystemPerformance'
 
-CPU_UTIL_NAME = 'CpuUtil'
-DISK_UTIL_NAME = 'DiskUtil'
-MEM_UTIL_NAME = 'MemUtil'
+COMMAND_OFF = DEFAULT_COMMAND
+COMMAND_ON  = 1
+
+DEFAULT_TYPE_ID           = 0
+DEFAULT_ACTUATOR_TYPE     = DEFAULT_TYPE_ID
+HVAC_ACTUATOR_TYPE        = 1
+HUMIDIFIER_ACTUATOR_TYPE  = 2
+LED_DISPLAY_ACTUATOR_TYPE = 100
+
+DEFAULT_SENSOR_TYPE  = DEFAULT_TYPE_ID
+HUMIDITY_SENSOR_TYPE = 1
+PRESSURE_SENSOR_TYPE = 2
+TEMP_SENSOR_TYPE     = 3
+
+SYSTEM_PERF_TYPE     = 100
+CPU_UTIL_TYPE        = 101
+DISK_UTIL_TYPE       = 102
+MEM_UTIL_TYPE        = 103
+
+CPU_UTIL_NAME  = 'DeviceCpuUtil'
+DISK_UTIL_NAME = 'DeviceDiskUtil'
+MEM_UTIL_NAME  = 'DeviceMemUtil'
 
 CDA_ACTUATOR_CMD_MSG_RESOURCE = PRODUCT_NAME + '/' + CONSTRAINED_DEVICE + '/' + ACTUATOR_CMD
 CDA_ACTUATOR_RESPONSE_MSG_RESOURCE = PRODUCT_NAME + '/' + CONSTRAINED_DEVICE + '/' + ACTUATOR_RESPONSE
@@ -87,6 +137,8 @@ MQTT    = 'Mqtt'
 COAP    = 'Coap'
 OPCUA   = 'Opcua'
 SMTP    = 'Smtp'
+
+DEVICE_LOCATION_ID_KEY = 'deviceLocationID'
 
 CLOUD_GATEWAY_SERVICE = CLOUD   + '.' + GATEWAY_SERVICE
 COAP_GATEWAY_SERVICE  = COAP    + '.' + GATEWAY_SERVICE
@@ -129,5 +181,5 @@ TEMP_SIM_FLOOR_KEY       = 'tempSimFloor'
 TEMP_SIM_CEILING_KEY     = 'tempSimCeiling'
 
 ENABLE_HANDLE_TEMP_CHANGE_ON_DEVICE_KEY = 'enableHandleTempChangeOnDevice'
-TRIGGER_HVAC_TEMP_FLOOR_KEY = 'triggerHvacTempFloor'
+TRIGGER_HVAC_TEMP_FLOOR_KEY   = 'triggerHvacTempFloor'
 TRIGGER_HVAC_TEMP_CEILING_KEY = 'triggerHvacTempCeiling'

@@ -1,32 +1,29 @@
 #####
 # 
-# This class is part of the Programming the Internet of Things project.
+# This class is part of the Programming the Internet of Things
+# project, and is available via the MIT License, which can be
+# found in the LICENSE file at the top level of this repository.
 # 
-# It is provided as a simple shell to guide the student and assist with
-# implementation for the Programming the Internet of Things exercises,
-# and designed to be modified by the student as needed.
-#
+# Copyright (c) 2020 by Andrew D. King
+# 
 
-from datetime import datetime
+from datetime import datetime, timezone
 
 import programmingtheiot.common.ConfigConst as ConfigConst
 
+from programmingtheiot.common.ConfigUtil import ConfigUtil
+
 class BaseIotData(object):
 	"""
-	This is a simple wrapper for an Actuator abstraction - it provides
-	a container for the actuator's state, value, name, and status. A
-	command variable is also provided to instruct the actuator to
-	perform a specific function (in addition to setting a new value
-	via the 'val' parameter.
+	This is the base class for all data containers. It stores values that each
+	sub-class is expected to set and / or utilization, including the name,
+	location ID, type ID, location specifics, and status information.
+	
+	Sub-classes add parameters and accessors specific to their needs.
 	
 	"""
-	DEFAULT_VAL = 0.0
-	
-	DEFAULT_STATUS = 0
-	STATUS_IDLE = DEFAULT_STATUS
-	STATUS_ACTIVE = 1
 
-	def __init__(self, name = ConfigConst.NOT_SET, d = None):
+	def __init__(self, name = ConfigConst.NOT_SET, typeID = ConfigConst.DEFAULT_TYPE_ID, d = None):
 		"""
 		Constructor.
 		
@@ -34,19 +31,70 @@ class BaseIotData(object):
 		It's provided here as a convenience - mostly for testing purposes. The utility
 		in DataUtil should be used instead.
 		"""
-		if not name:
-			name = ConfigConst.NOT_SET
 			
+		self.updateTimeStamp()
+		self.hasError = False
+		
+		useDefaults = True
+		
 		if d:
-			self.name = d['name']
-			self.timeStamp = d['timeStamp']
-			self.hasError = d['hasError']
-			self.statusCode = d['statusCode']
-		else:
-			self.updateTimeStamp()
-			self.name = name
-			self.hasError = False
-			self.statusCode = self.DEFAULT_STATUS
+			try:
+				self.name       = d[ConfigConst.NAME_PROP]
+				self.typeID     = d[ConfigConst.TYPE_ID_PROP]
+				self.statusCode = d[ConfigConst.STATUS_CODE_PROP]
+				self.latitude   = d[ConfigConst.LATITUDE_PROP]
+				self.longitude  = d[ConfigConst.LONGITUDE_PROP]
+				self.elevation  = d[ConfigConst.ELEVATION_PROP]
+				
+				useDefaults = False
+			except:
+				pass
+			
+		if useDefaults:
+			self.name       = name
+			self.typeID     = typeID
+			self.statusCode = ConfigConst.DEFAULT_STATUS
+			self.latitude   = ConfigConst.DEFAULT_LAT
+			self.longitude  = ConfigConst.DEFAULT_LON
+			self.elevation  = ConfigConst.DEFAULT_ELEVATION
+		
+		if not self.name:
+			self.name = ConfigConst.NOT_SET
+			
+		# always pull location ID from configuration file
+		self.locationID = ConfigUtil().getProperty(ConfigConst.CONSTRAINED_DEVICE, ConfigConst.DEVICE_LOCATION_ID_KEY)
+		
+	def getElevation(self) -> float:
+		"""
+		Returns the elevation.
+		
+		@return The elevation value as a float.
+		"""
+		return self.elevation
+	
+	def getLatitude(self) -> float:
+		"""
+		Returns the latitude.
+		
+		@return The latitude value as a float.
+		"""
+		return self.latitude
+	
+	def getLongitude(self) -> float:
+		"""
+		Returns the longitude.
+		
+		@return The longitude value as a float.
+		"""
+		return self.longitude
+	
+	def getLocationID(self) -> str:
+		"""
+		Returns the location ID.
+		
+		@return The location ID as a string.
+		"""
+		return self.locationID
 	
 	def getName(self) -> str:
 		"""
@@ -66,11 +114,21 @@ class BaseIotData(object):
 	
 	def getTimeStamp(self) -> str:
 		"""
-		Returns the time stamp.
+		Returns the time stamp in ISO 8601 format, as follows:
+		%Y%m%dT%H:%M:%S%z
 		
 		@return The time stamp as a string.
 		"""
 		return self.timeStamp
+	
+	def getTypeID(self) -> int:
+		"""
+		Returns the type ID as an integer. This allows for additional granularity
+		in determining the sensor, actuator, or other data representation.
+		
+		@return The type ID as an integer.
+		"""
+		return self.typeID
 	
 	def hasErrorFlag(self):
 		"""
@@ -81,13 +139,47 @@ class BaseIotData(object):
 		"""
 		return self.hasError
 	
+	def setElevation(self, val: float):
+		"""
+		Sets the elevation value.
+		
+		@param val The elevation value as a float.
+		"""
+		self.elevation = val
+	
+	def setLatitude(self, val: float):
+		"""
+		Sets the latitude value.
+		
+		@param val The latitude value as a float.
+		"""
+		self.latitude = val
+	
+	def setLongitude(self, val: float):
+		"""
+		Sets the longitude value.
+		
+		@param val The longitude value as a float.
+		"""
+		self.longitude = val
+	
+	def setLocationID(self, locID: str):
+		"""
+		Sets the location ID. If invalid, no action is taken.
+		
+		@param The id as a string.
+		"""
+		if locID:
+			self.locationID = locID
+		
 	def setName(self, name: str):
 		"""
-		Sets the name.
+		Sets the name. If invalid, no action is taken.
 		
 		@param The name as a string.
 		"""
-		self.name = name
+		if name:
+			self.name = name
 		
 	def setStatusCode(self, statusCode: int):
 		"""
@@ -100,43 +192,69 @@ class BaseIotData(object):
 		
 		if statusCode < 0:
 			self.hasError = True
+			
+	def setTypeID(self, typeID: int):
+		"""
+		Sets the type ID value.
+		
+		@param typeID The type ID value as an integer.
+		"""
+		self.typeID = typeID
 	
 	def updateData(self, data):
 		"""
 		Sets the internal values of this object to be that of 'data',
 		which is assumed to be an BaseIotData instance.
 		
-		NOTE: The time stamp will NOT be affected by this action.
+		NOTE: The time stamp will also be updated by this action.
 		
 		@param data The BaseIotData data to apply to this instance.
 		"""
-		self.name = data.getName()
-		self.hasError = data.hasErrorFlag()
-		self.statusCode = data.getStatusCode()
-		
-		self._handleUpdateData(data)
+		if data and isinstance(data, BaseIotData):
+			self.setName(data.getName())
+			self.setTypeID(data.getTypeID())
+			self.setStatusCode(data.getStatusCode())
+			self.setElevation(data.getElevation())
+			self.setLatitude(data.getLatitude())
+			self.setLongitude(data.getLongitude())
+			self.setLocationID(data.getLocationID())
+			
+			self.updateTimeStamp()
+			
+			self._handleUpdateData(data)
 		
 	def updateTimeStamp(self):
 		"""
-		Updates the internal time stamp to the current date / time.
+		Updates the internal time stamp to the current date / time
+		in Zulu time.
+		This retrieves the time since Epoch and converts to an ISO 8601
+		string, with second granularity, as follows:
 		
+		e.g. 2020-12-27T17:12:40.032631+00:00
+		
+		NOTE: the '+00:00' is the offset from GMT, and can be replaced
+		with 'Z' if desired. In testing, the format above is
+		compatible with the GDA's parsing logic.
 		"""
-		self.timeStamp = str(datetime.now())
+		self.timeStamp = str(datetime.now(timezone.utc).isoformat())
 	
 	def __str__(self):
 		"""
 		Returns a string representation of this instance.
 		
-		@return The string representing this instance.
+		@return The string representing this instance, returned in CSV 'key=value' format.
 		"""
-		customStr = \
-			str('name='	+ self.name + \
-			',timeStamp=' + self.timeStamp + \
-			',hasError=' + str(self.hasError) + \
-			',statusCode=' + str(self.statusCode))
-					
-		return customStr
-	
+		return '{}={},{}={},{}={},{}={},{}={},{}={},{}={},{}={},{}={}'.format(
+			ConfigConst.NAME_PROP, self.name,
+			ConfigConst.TYPE_ID_PROP, self.typeID,
+			ConfigConst.TIMESTAMP_PROP, self.timeStamp,
+			ConfigConst.STATUS_CODE_PROP, self.statusCode,
+			ConfigConst.HAS_ERROR_PROP, self.hasError,
+			ConfigConst.LOCATION_ID_PROP, self.locationID,
+			ConfigConst.ELEVATION_PROP, self.elevation,
+			ConfigConst.LATITUDE_PROP, self.latitude,
+			ConfigConst.LONGITUDE_PROP, self.longitude)
+			
 	def _handleUpdateData(self, data):
 		"""
 		Template method definition to update sub-class data.

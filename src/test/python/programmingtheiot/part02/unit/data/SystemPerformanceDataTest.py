@@ -24,9 +24,9 @@ class SystemPerformanceDataTest(unittest.TestCase):
 	"""
 	
 	DEFAULT_NAME = "SystemPerformanceDataFooBar"
-	DEFAULT_CPU_UTIL_DATA = 10.0
+	DEFAULT_CPU_UTIL_DATA  = 10.0
 	DEFAULT_DISK_UTIL_DATA = 10.0
-	DEFAULT_MEM_UTIL_DATA = 10.0
+	DEFAULT_MEM_UTIL_DATA  = 10.0
 	
 	@classmethod
 	def setUpClass(self):
@@ -42,12 +42,14 @@ class SystemPerformanceDataTest(unittest.TestCase):
 	def testDefaultValues(self):
 		spd = SystemPerformanceData()
 		
-		self.assertEquals(spd.getName(), ConfigConst.NOT_SET)
-		self.assertEquals(spd.getStatusCode(), SystemPerformanceData.DEFAULT_STATUS)
+		self.assertEquals(spd.getName(), ConfigConst.SYSTEM_PERF_NAME)
+		self.assertEquals(spd.getStatusCode(), ConfigConst.DEFAULT_STATUS)
 		
-		self.assertEquals(spd.getCpuUtilization(), SystemPerformanceData.DEFAULT_VAL)
-		self.assertEquals(spd.getDiskUtilization(), SystemPerformanceData.DEFAULT_VAL)
-		self.assertEquals(spd.getMemoryUtilization(), SystemPerformanceData.DEFAULT_VAL)
+		self.assertEquals(spd.getCpuUtilization(), ConfigConst.DEFAULT_VAL)
+		self.assertEquals(spd.getDiskUtilization(), ConfigConst.DEFAULT_VAL)
+		self.assertEquals(spd.getMemoryUtilization(), ConfigConst.DEFAULT_VAL)
+		
+		logging.info("System perf data as string: " + str(spd))
 
 	def testParameterUpdates(self):
 		spd = self._createTestSystemPerformanceData()
@@ -62,11 +64,11 @@ class SystemPerformanceDataTest(unittest.TestCase):
 		spd = SystemPerformanceData()
 		spd2 = self._createTestSystemPerformanceData()
 		
-		self.assertEquals(spd.getName(), ConfigConst.NOT_SET)
+		self.assertEquals(spd.getName(), ConfigConst.SYSTEM_PERF_NAME)
 		
-		self.assertEquals(spd.getCpuUtilization(), SystemPerformanceData.DEFAULT_VAL)
-		self.assertEquals(spd.getDiskUtilization(), SystemPerformanceData.DEFAULT_VAL)
-		self.assertEquals(spd.getMemoryUtilization(), SystemPerformanceData.DEFAULT_VAL)
+		self.assertEquals(spd.getCpuUtilization(), ConfigConst.DEFAULT_VAL)
+		self.assertEquals(spd.getDiskUtilization(), ConfigConst.DEFAULT_VAL)
+		self.assertEquals(spd.getMemoryUtilization(), ConfigConst.DEFAULT_VAL)
 		
 		spd.updateData(spd2)
 		
@@ -83,6 +85,8 @@ class SystemPerformanceDataTest(unittest.TestCase):
 		spd.setCpuUtilization(self.DEFAULT_CPU_UTIL_DATA)
 		spd.setDiskUtilization(self.DEFAULT_DISK_UTIL_DATA)
 		spd.setMemoryUtilization(self.DEFAULT_MEM_UTIL_DATA)
+		
+		logging.info("System perf data as string: " + str(spd))
 		
 		return spd
 

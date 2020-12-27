@@ -35,12 +35,13 @@ enableCrypt    = False
 # CDA specific configuration information
 #
 [ConstrainedDevice]
-enableEmulator  = False
-enableSenseHAT  = False
-enableLogging   = True
-pollCycleSecs   = 60
-testGdaDataPath = /tmp/gda-data
-testCdaDataPath = /tmp/cda-data
+deviceLocationID = constraineddevice001
+enableEmulator   = False
+enableSenseHAT   = False
+enableLogging    = True
+pollCycleSecs    = 60
+testGdaDataPath  = /tmp/gda-data
+testCdaDataPath  = /tmp/cda-data
 
 # configurable limits for sensor simulation
 humiditySimFloor   = 35
@@ -52,5 +53,5 @@ tempSimCeiling     = 22
 
 # configurable limits for actuator triggers
 enableHandleTempChangeOnDevice = True
-triggerHvacTempFloor = 16
+triggerHvacTempFloor   = 16
 triggerHvacTempCeiling = 23

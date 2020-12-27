@@ -10,6 +10,8 @@
 import logging
 import unittest
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.data.ActuatorData import ActuatorData
 
 class ActuatorDataTest(unittest.TestCase):
@@ -39,14 +41,16 @@ class ActuatorDataTest(unittest.TestCase):
 	def testDefaultValues(self):
 		ad = ActuatorData()
 		
-		self.assertEquals(ad.getCommand(), ActuatorData.DEFAULT_COMMAND)
-		self.assertEquals(ad.getStatusCode(), ActuatorData.DEFAULT_STATUS)
+		self.assertEquals(ad.getCommand(), ConfigConst.DEFAULT_COMMAND)
+		self.assertEquals(ad.getStatusCode(), ConfigConst.DEFAULT_STATUS)
+		
+		logging.info("Actuator data as string: " + str(ad))
 
 	def testParameterUpdates(self):
 		ad = self._createTestActuatorData()
 		
 		self.assertEquals(ad.getName(), self.DEFAULT_NAME)
-		self.assertEquals(ad.getCommand(), ActuatorData.COMMAND_ON)
+		self.assertEquals(ad.getCommand(), ConfigConst.COMMAND_ON)
 		self.assertEquals(ad.getStateData(), self.DEFAULT_STATE_DATA)
 		self.assertEquals(ad.getValue(), self.DEFAULT_VALUE)
 
@@ -56,17 +60,19 @@ class ActuatorDataTest(unittest.TestCase):
 		
 		ad.updateData(ad2)
 		
-		self.assertEquals(ad.getCommand(), ActuatorData.COMMAND_ON)
+		self.assertEquals(ad.getCommand(), ConfigConst.COMMAND_ON)
 		self.assertEquals(ad.getStateData(), self.DEFAULT_STATE_DATA)
 		self.assertEquals(ad.getValue(), self.DEFAULT_VALUE)
-	
+		
 	def _createTestActuatorData(self):
 		ad = ActuatorData()
 		
 		ad.setName(self.DEFAULT_NAME)
-		ad.setCommand(ActuatorData.COMMAND_ON)
+		ad.setCommand(ConfigConst.COMMAND_ON)
 		ad.setStateData(self.DEFAULT_STATE_DATA)
 		ad.setValue(self.DEFAULT_VALUE)
+		
+		logging.info("Actuator data as string: " + str(ad))
 		
 		return ad
 

@@ -16,17 +16,9 @@ class SensorData(BaseIotData):
 	Shell representation of class for student implementation.
 	
 	"""
-	DEFAULT_VAL = 0.0
-	DEFAULT_SENSOR_TYPE = 0
-	
-	# These are just sensor type samples - these can be changed however
-	# you'd like; you can also create an enum representing the values
-	HUMIDITY_SENSOR_TYPE = 1
-	PRESSURE_SENSOR_TYPE = 2
-	TEMP_SENSOR_TYPE = 3
 		
-	def __init__(self, sensorName = ConfigConst.NOT_SET, sensorType = DEFAULT_SENSOR_TYPE, d = None):
-		super(SensorData, self).__init__(name = sensorName, d = d)
+	def __init__(self, typeID: int = ConfigConst.DEFAULT_SENSOR_TYPE, name = ConfigConst.NOT_SET, d = None):
+		super(SensorData, self).__init__(name = name, typeID = typeID, d = d)
 		pass
 	
 	def getSensorType(self) -> int:
