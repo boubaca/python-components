@@ -72,8 +72,10 @@ def main():
 	cda = ConstrainedDeviceApp()
 	cda.startApp()
 	
-	sleep(35)
-		
+	# run for 5 minutes - this can be changed as needed
+	sleep(600)
+	
+	# optionally stop the app - this can be removed if needed
 	cda.stopApp(0)
 
 if __name__ == '__main__':

@@ -22,7 +22,7 @@ class SensorAdapterManager(object):
 	
 	"""
 
-	def __init__(self, useEmulator: bool = False, pollRate: int = 60):
+	def __init__(self):
 		pass
 
 	def handleTelemetry(self):

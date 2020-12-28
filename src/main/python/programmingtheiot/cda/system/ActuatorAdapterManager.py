@@ -19,7 +19,7 @@ class ActuatorAdapterManager(object):
 	
 	"""
 	
-	def __init__(self, useEmulator: bool = False):
+	def __init__(self):
 		pass
 
 	def sendActuatorCommand(self, data: ActuatorData) -> bool:

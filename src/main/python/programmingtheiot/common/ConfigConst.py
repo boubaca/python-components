@@ -173,6 +173,10 @@ POLL_CYCLES_KEY      = 'pollCycleSecs'
 KEEP_ALIVE_KEY       = 'keepAlive'
 DEFAULT_QOS_KEY      = 'defaultQos'
 
+ENABLE_MQTT_CLIENT_KEY = 'enableMqttClient'
+ENABLE_COAP_CLIENT_KEY = 'enableCoapClient'
+ENABLE_COAP_SERVER_KEY = 'enableCoapServer'
+
 HUMIDITY_SIM_FLOOR_KEY   = 'humiditySimFloor'
 HUMIDITY_SIM_CEILING_KEY = 'humiditySimCeiling'
 PRESSURE_SIM_FLOOR_KEY   = 'pressureSimFloor'

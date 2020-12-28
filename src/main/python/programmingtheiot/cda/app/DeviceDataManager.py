@@ -29,7 +29,7 @@ class DeviceDataManager(IDataMessageListener):
 	
 	"""
 	
-	def __init__(self, enableMqtt: bool = True, enableCoap: bool = False):
+	def __init__(self):
 		pass
 		
 	def handleActuatorCommandResponse(self, data: ActuatorData) -> bool:

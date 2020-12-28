@@ -46,10 +46,18 @@ class DeviceDataManagerNoCommsTest(unittest.TestCase):
 		pass
 
 	def testStartAndStopManagerNoComms(self):
-		ddMgr = DeviceDataManager(enableMqtt = False, enableCoap = False)
+		"""
+		NOTE: Be sure to disable MQTT and CoAP by setting the following flags to False
+		within PiotConfig.props
+		enableMqttClient = False
+		enableCoapClient = False
+		
+		"""
+		
+		ddMgr = DeviceDataManager()
 		ddMgr.startManager()
 		
-		sleep(30)
+		sleep(60)
 		
 		ddMgr.stopManager()
 

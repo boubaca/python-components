@@ -47,28 +47,52 @@ class DeviceDataManagerWithCommsTest(unittest.TestCase):
 
 	#@unittest.skip("Ignore for now.")
 	def testStartAndStopManagerWithMqtt(self):
-		ddMgr = DeviceDataManager(enableMqtt = True, enableCoap = False)
+		"""
+		NOTE: Be sure to enable MQTT by setting the following flag to True
+		within PiotConfig.props
+		enableMqttClient = True
+		enableCoapClient = False
+		
+		"""
+		
+		ddMgr = DeviceDataManager()
 		ddMgr.startManager()
 		
-		sleep(30)
+		sleep(60)
 		
 		ddMgr.stopManager()
 
 	#@unittest.skip("Ignore for now.")
 	def testStartAndStopManagerWithCoap(self):
-		ddMgr = DeviceDataManager(enableMqtt = False, enableCoap = True)
+		"""
+		NOTE: Be sure to enable CoAP by setting the following flag to True
+		within PiotConfig.props
+		enableMqttClient = False
+		enableCoapClient = True
+		
+		"""
+		
+		ddMgr = DeviceDataManager()
 		ddMgr.startManager()
 		
-		sleep(30)
+		sleep(60)
 		
 		ddMgr.stopManager()
 
 	#@unittest.skip("Ignore for now.")
 	def testStartAndStopManagerWithMqttAndCoap(self):
-		ddMgr = DeviceDataManager(enableMqtt = True, enableCoap = True)
+		"""
+		NOTE: Be sure to enable MQTT and CoAP by setting the following flags to True
+		within PiotConfig.props
+		enableMqttClient = True
+		enableCoapClient = True
+		
+		"""
+		
+		ddMgr = DeviceDataManager()
 		ddMgr.startManager()
 		
-		sleep(30)
+		sleep(60)
 		
 		ddMgr.stopManager()
 
