@@ -32,19 +32,19 @@ class DeviceDataManager(IDataMessageListener):
 	def __init__(self):
 		pass
 		
+	def handleActuatorCommandMessage(self, data: ActuatorData) -> bool:
+		pass
+	
 	def handleActuatorCommandResponse(self, data: ActuatorData) -> bool:
 		pass
-		
+	
 	def handleIncomingMessage(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
 		pass
-		
+	
 	def handleSensorMessage(self, data: SensorData) -> bool:
 		pass
-		
+	
 	def handleSystemPerformanceMessage(self, data: SystemPerformanceData) -> bool:
-		pass
-		
-	def handleUpdateResponse(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
 		pass
 	
 	def startManager(self):

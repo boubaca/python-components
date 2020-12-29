@@ -48,17 +48,6 @@ class IDataMessageListener():
 		"""
 		pass
 
-	def handleUpdateResponse(self, resourceEnum: ResourceNameEnum, msg: str) -> bool:
-		"""
-		Callback function to handle incoming messages on a given topic with
-		a string-based payload.
-		
-		@param resourceEnum The topic enum associated with this message.
-		@param msg The message received. It is expected to be in JSON format.
-		@return bool True on success; False otherwise.
-		"""
-		pass
-
 	def handleSensorMessage(self, data: SensorData) -> bool:
 		"""
 		Callback function to handle a sensor message packaged as a SensorData object.

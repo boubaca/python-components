@@ -21,6 +21,18 @@ class DefaultDataMessageListener(IDataMessageListener):
 	
 	"""
 
+	def handleActuatorCommandMessage(self, data: ActuatorData) -> bool:
+		"""
+		Callback function to handle an actuator command message packaged as a ActuatorData object.
+		
+		@param data The ActuatorData message received.
+		@return bool True on success; False otherwise.
+		"""
+		if data:
+			logging.info('Actuator Command Msg: ' + str(data.getCommand()))
+			
+		return True
+	
 	def handleActuatorCommandResponse(self, data: ActuatorData) -> bool:
 		"""
 		Callback function to handle an actuator command response packaged as a ActuatorData object.
