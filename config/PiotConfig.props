@@ -54,6 +54,6 @@ tempSimFloor       = 18
 tempSimCeiling     = 22
 
 # configurable limits for actuator triggers
-enableHandleTempChangeOnDevice = True
-triggerHvacTempFloor   = 16
-triggerHvacTempCeiling = 23
+handleTempChangeOnDevice = True
+triggerHvacTempFloor     = 16.0
+triggerHvacTempCeiling   = 23.0
