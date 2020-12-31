@@ -47,24 +47,35 @@ This repository has external dependencies on other open source projects. I'm gra
 Core exercises:
 
 - [apscheduler](https://github.com/agronholm/apscheduler)
+  - Reference: A. Grönholm. APScheduler. (2020) [Online]. Available: https://pypi.org/project/APScheduler/.
 - [psutil](https://github.com/giampaolo/psutil)
+  - Reference: G. Rodola. Psutil. (2009 – 2020) [Online]. Available: https://psutil.readthedocs.io/en/latest/.
 - [numpy](https://numpy.org/)
+  - Reference: NumPy. NumPy. (2020) [Online]. Available: https://numpy.org/.
 - [matplotlib](https://matplotlib.org/)
   - Reference: [J. D. Hunter, "Matplotlib: A 2D Graphics Environment", Computing in Science & Engineering, vol. 9, no. 3, pp. 90-95, 2007.](https://ieeexplore.ieee.org/document/4160265)
   - DOI: https://doi.org/10.5281/zenodo.592536
-- [sense-emu](https://sense-emu.readthedocs.io/en/v1.1/)
+- [Sense-Emu](https://sense-emu.readthedocs.io/en/v1.1/)
+  - Reference: The Raspberry Pi Foundation. Sense HAT Emulator. (2016) [Online]. Available: https://sense-emu.readthedocs.io/en/v1.0/.
 - [pisense](https://pisense.readthedocs.io/en/release-0.2/#)
+  - Reference: D. Jones. Pisense. (2016 – 2018) [Online]. Available: https://pisense.readthedocs.io/en/release-0.2/.
 - [paho-mqtt](https://www.eclipse.org/paho/)
-- [CoAPthon3](https://github.com/Tanganelli/CoAPthon3)
+  - Reference: R. Light. paho-mqtt. (2020) [Online]. Available: https://pypi.org/project/paho-mqtt/.
+- [CoAPthon](https://github.com/Tanganelli/CoAPthon3)
   - Reference: G.Tanganelli, C. Vallati, E.Mingozzi, "CoAPthon: Easy Development of CoAP-based IoT Applications with Python", IEEE World Forum on Internet of Things (WF-IoT 2015)
 
 Additional exercises:
 
 - [imutils](https://github.com/jrosebr1/imutils)
+  - Reference: A. Rosebrock. imutils. (2020) [Online]. Available: https://pypi.org/project/imutils/.
 - [opencv-python](https://github.com/skvark/opencv-python)
+  - Reference: O. Heinisuo. opencv-python. (2020) [Online]. Available: https://pypi.org/project/opencv-python/.
 - [opencv-python-headless](https://pypi.org/project/opencv-python-headless/)
+  - Reference: See opencv-python
 - [opencv-contrib-python](https://pypi.org/project/opencv-contrib-python/)
+  - Reference: See opencv-python
 - [rtsp](https://github.com/statueofmike/rtsp)
+  - Reference: M. Stewart. rtsp. (2020) [Online]. https://pypi.org/project/rtsp/.
 
 NOTE: This list will be updated as others are incorporated.
 
