@@ -14,7 +14,6 @@ from time import sleep
 import programmingtheiot.common.ConfigConst as ConfigConst
 
 from programmingtheiot.common.ConfigUtil import ConfigUtil
-from programmingtheiot.data.ActuatorData import ActuatorData
 from programmingtheiot.cda.sim.BaseActuatorSimTask import BaseActuatorSimTask
 
 from pisense import SenseHAT
@@ -28,5 +27,9 @@ class HumidifierEmulatorTask(BaseActuatorSimTask):
 	def __init__(self):
 		pass
 
-	def _handleActuation(self, cmd: int, val: float = 0.0, stateData: str = None) -> int:
+	def _activateActuator(self, val: float = ConfigConst.DEFAULT_VAL, stateData: str = None) -> int:
 		pass
+
+	def _deactivateActuator(self, val: float = ConfigConst.DEFAULT_VAL, stateData: str = None) -> int:
+		pass
+	

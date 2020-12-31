@@ -13,7 +13,6 @@ import programmingtheiot.common.ConfigConst as ConfigConst
 
 from programmingtheiot.common.ConfigUtil import ConfigUtil
 from programmingtheiot.cda.sim.BaseSensorSimTask import BaseSensorSimTask
-from programmingtheiot.cda.sim.SensorDataGenerator import SensorDataGenerator
 
 from pisense import SenseHAT
 

@@ -20,7 +20,7 @@ class BaseActuatorSimTask():
 	
 	"""
 
-	def __init__(self, actuatorName = ConfigConst.NOT_SET, actuatorType: int = ActuatorData.DEFAULT_ACTUATOR_TYPE, simpleName: str = "Actuator"):
+	def __init__(self, actuatorName = ConfigConst.NOT_SET, actuatorType: int = ConfigConst.DEFAULT_ACTUATOR_TYPE, simpleName: str = "Actuator"):
 		pass
 		
 	def activateActuator(self, val: float) -> bool:

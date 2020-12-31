@@ -23,9 +23,3 @@ class TemperatureSensorSimTask(BaseSensorSimTask):
 	def __init__(self):
 		pass
 	
-	def generateTelemetry(self) -> SensorData:
-		pass
-	
-	def getTelemetryValue(self) -> float:
-		pass
-	
