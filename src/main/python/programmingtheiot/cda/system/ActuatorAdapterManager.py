@@ -9,6 +9,8 @@
 
 import logging
 
+from importlib import import_module
+
 from programmingtheiot.common.IDataMessageListener import IDataMessageListener
 
 from programmingtheiot.data.ActuatorData import ActuatorData
