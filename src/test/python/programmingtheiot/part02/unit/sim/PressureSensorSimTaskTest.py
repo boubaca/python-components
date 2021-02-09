@@ -10,6 +10,8 @@
 import logging
 import unittest
 
+import programmingtheiot.common.ConfigConst as ConfigConst
+
 from programmingtheiot.cda.sim.PressureSensorSimTask import PressureSensorSimTask
 
 class PressureSensorSimTaskTest(unittest.TestCase):
